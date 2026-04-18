@@ -486,9 +486,9 @@ function endWpm() {
 
     // Determine Grade
     let grade = 'D';
-    if (wpm >= 100 && accuracy >= 95) grade = 'S';
-    else if (wpm >= 80 && accuracy >= 90) grade = 'A';
-    else if (wpm >= 60 && accuracy >= 85) grade = 'B';
+    if (wpm >= 80 && accuracy >= 95) grade = 'S';
+    else if (wpm >= 65 && accuracy >= 90) grade = 'A';
+    else if (wpm >= 55 && accuracy >= 85) grade = 'B';
     else if (wpm >= 40) grade = 'C';
     
     const gradeEl = document.getElementById('wpm-grade');
