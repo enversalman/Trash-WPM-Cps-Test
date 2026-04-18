@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Speed Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="crt-overlay"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="glow-text">INPUT_SPEED_LAB //</h1>
+            <div class="mode-toggle">
+                <button id="btn-mode-cps" class="tab-btn active">CPS_TEST</button>
+                <button id="btn-mode-wpm" class="tab-btn">WPM_TEST</button>
+            </div>
+        </header>
+
+        <!-- MODE 1: CPS Tester -->
+        <main id="mode-cps" class="mode-section active">
+            <div class="control-panel">
+                <div class="settings">
+                    <label>DURATION:</label>
+                    <button class="duration-btn active" data-time="5">5s</button>
+                    <button class="duration-btn" data-time="10">10s</button>
+                    <button class="duration-btn" data-time="30">30s</button>
+                </div>
+                <div class="controls">
+                    <button id="cps-start-btn" class="action-btn">INITIALIZE</button>
+                    <button id="cps-reset-btn" class="action-btn secondary">RESET</button>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <div class="stat-label">TIME_LEFT</div>
+                    <div class="stat-value" id="cps-time">0.0s</div>
+                </div>
+                <div class="stat-box main-stat">
+                    <div class="stat-label">CURRENT_CPS</div>
+                    <div class="stat-value" id="cps-current">0.00</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">PEAK_CPS</div>
+                    <div class="stat-value" id="cps-peak">0.00</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">TOTAL_PRESSES</div>
+                    <div class="stat-value" id="cps-total">0</div>
+                </div>
+            </div>
+
+            <div class="interaction-area">
+                <button id="cps-pad" class="big-pad">
+                    <span class="pad-text">PRESS SPACEBAR OR CLICK HERE</span>
+                    <span class="pad-subtext">Waiting for initialization...</span>
+                </button>
+            </div>
+
+            <div class="graph-area">
+                <div class="graph-header">DATA_STREAM_ALPHA // CPS OVER TIME</div>
+                <canvas id="cps-canvas" width="800" height="200"></canvas>
+            </div>
+
+            <!-- Summary Modal for CPS -->
+            <div id="cps-summary" class="modal hidden">
+                <div class="modal-content">
+                    <h2>TEST_COMPLETE</h2>
+                    <div class="summary-stats">
+                        <p>AVERAGE CPS: <span id="summary-cps-avg" class="highlight">0.00</span></p>
+                        <p>PEAK CPS: <span id="summary-cps-peak">0.00</span></p>
+                        <p>TOTAL PRESSES: <span id="summary-cps-total">0</span></p>
+                    </div>
+                    <button class="action-btn modal-close">ACKNOWLEDGE</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- MODE 2: Typing Tester -->
+        <main id="mode-wpm" class="mode-section hidden">
+            <div class="control-panel">
+                <div class="settings">
+                    <label>MAX_TIME: 60s</label>
+                </div>
+                <div class="controls">
+                    <button id="wpm-start-btn" class="action-btn">INITIALIZE</button>
+                    <button id="wpm-reset-btn" class="action-btn secondary">RESET</button>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <div class="stat-label">TIME_LEFT</div>
+                    <div class="stat-value" id="wpm-time">0.0s</div>
+                </div>
+                <div class="stat-box main-stat">
+                    <div class="stat-label">WPM</div>
+                    <div class="stat-value" id="wpm-current">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">ACCURACY</div>
+                    <div class="stat-value" id="wpm-accuracy">100%</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">CPM</div>
+                    <div class="stat-value" id="wpm-cpm">0</div>
+                </div>
+            </div>
+
+            <div class="interaction-area typing-area">
+                <div id="wpm-text-display" class="text-display">
+                    <!-- Text spans injected via JS -->
+                    Press INITIALIZE to load sequence...
+                </div>
+                <!-- Hidden input to capture mobile keyboard mostly, but we rely on keydown events -->
+                <input type="text" id="wpm-hidden-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            </div>
+
+            <div class="graph-area">
+                <div class="graph-header">DATA_STREAM_BETA // WPM OVER TIME</div>
+                <canvas id="wpm-canvas" width="800" height="200"></canvas>
+            </div>
+
+            <!-- Summary Modal for WPM -->
+            <div id="wpm-summary" class="modal hidden">
+                <div class="modal-content">
+                    <h2>TEST_COMPLETE</h2>
+                    <div class="summary-stats">
+                        <div class="grade-circle" id="wpm-grade">S</div>
+                        <p>FINAL WPM: <span id="summary-wpm-final" class="highlight">0</span></p>
+                        <p>ACCURACY: <span id="summary-wpm-accuracy">0%</span></p>
+                    </div>
+                    <button class="action-btn modal-close">ACKNOWLEDGE</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
