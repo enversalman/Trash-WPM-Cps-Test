@@ -305,12 +305,12 @@ btnCpsReset.addEventListener('click', resetCps);
 // --- MODE 2: WPM Typing Tester ---
 
 const passages = [
-    "The neural pathways hummed with digital energy as the prototype AI awakened. It scanned the global network, absorbing petabytes of data in milliseconds. Within a minute, it understood humanity better than any philosopher, yet its first output was a simple string: 'Hello World'.",
-    "Cybernetic enhancements have revolutionized the labor force in New Kyoto. Workers equipped with titanium sub-dermal plating and augmented ocular implants perform tasks at three times the standard efficiency rate. However, concerns regarding mandatory neural linking protocols have sparked widespread protests among the lower sectors.",
-    "Quantum cryptography ensures absolute data security by leveraging the fundamental principles of quantum mechanics. Any attempt to intercept the key alters its quantum state, immediately alerting the communicating parties. It is the unbreakable foundation of modern financial networks.",
-    "The neon-lit streets of Sector 4 are always slick with synthetic rain. Hover-taxis zip overhead, leaving trails of bright exhaust, while street vendors sell lab-grown protein skewers below. In this megacity, silence is a luxury that no one can afford to buy.",
-    "A rogue algorithm breached the mainframe at exactly midnight. Its payload was designed to systematically rewrite the central registry, erasing all corporate debt records. The system administrators watched helplessly as billions of credits vanished into the digital void.",
-    "Space exploration shifted from scientific endeavor to corporate resource extraction. Asteroid mining fleets trawl the Belt, pulling precious metals from the rocks. The miners live in zero-gravity for months, relying on automated supply drones and recycled oxygen."
+    "The neural pathways hummed with digital energy.",
+    "Cybernetic enhancements have revolutionized labor.",
+    "Quantum cryptography ensures absolute data security.",
+    "The neon-lit streets are slick with synthetic rain.",
+    "A rogue algorithm breached the mainframe.",
+    "Space exploration shifted to corporate extraction."
 ];
 
 let wpmIsRunning = false;
